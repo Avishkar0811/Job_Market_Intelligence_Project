@@ -1,0 +1,52 @@
+// Paste these into Power BI: Home > Enter data (blank table named _Measures), then New measure for each.
+// Tables: Jobs (powerbi_jobs.csv), Skills (powerbi_job_skills.csv), Calendar (see POWER_BI_GUIDE.md)
+
+Total Jobs = COUNTROWS(Jobs)
+
+Fresher Jobs = CALCULATE([Total Jobs], Jobs[is_fresher_role] = TRUE())
+
+Fresher Share % = DIVIDE([Fresher Jobs], [Total Jobs])
+
+Active Jobs % = DIVIDE(CALCULATE([Total Jobs], Jobs[is_active] = TRUE()), [Total Jobs])
+
+Distinct Companies = DISTINCTCOUNT(Jobs[company_name])
+
+Avg Salary (LPA) = AVERAGE(Jobs[salary_mid_lpa])
+
+Avg Min Salary (LPA) = AVERAGE(Jobs[salary_min_lpa])
+
+Avg Max Salary (LPA) = AVERAGE(Jobs[salary_max_lpa])
+
+Avg Stipend (INR per month) = AVERAGE(Jobs[stipend_amount])
+
+Total Applicants = SUM(Jobs[applicant_count])
+
+Applicants per Job = DIVIDE([Total Applicants], [Total Jobs])
+
+Remote or Hybrid % =
+DIVIDE(
+    CALCULATE([Total Jobs], Jobs[work_mode] IN {"Remote", "Hybrid"}),
+    [Total Jobs]
+)
+
+Hard Interview % =
+DIVIDE(CALCULATE([Total Jobs], Jobs[interview_difficulty] = "Hard"), [Total Jobs])
+
+Avg Career Growth = AVERAGE(Jobs[career_growth_pct])
+
+Skill Demand = DISTINCTCOUNT(Skills[job_id])
+
+Skill Demand % = DIVIDE([Skill Demand], [Total Jobs])
+
+Jobs Previous Month =
+CALCULATE([Total Jobs], DATEADD('Calendar'[Date], -1, MONTH))
+
+Jobs MoM % = DIVIDE([Total Jobs] - [Jobs Previous Month], [Jobs Previous Month])
+
+Opportunity Score =
+// Simple, explainable ranking: higher salary, lower competition, higher growth.
+// Use only to compare rows inside a visual (it is relative, not an absolute truth).
+VAR salaryRank = RANKX(ALLSELECTED(Jobs[job_title]), [Avg Salary (LPA)], , ASC, Dense)
+VAR compRank   = RANKX(ALLSELECTED(Jobs[job_title]), [Applicants per Job], , DESC, Dense)
+VAR growthRank = RANKX(ALLSELECTED(Jobs[job_title]), [Avg Career Growth], , ASC, Dense)
+RETURN salaryRank + compRank + growthRank

@@ -1,0 +1,27 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Large or redistribution-restricted data (reproduce with the scripts in python/)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/jobs_cleaned.csv
+data/processed/jobs_oracle_import.csv
+data/processed/powerbi_jobs.csv
+data/processed/powerbi_job_skills.csv
+
+# Power BI temporary files
+*.pbi/
+~$*
+# A .pbix embeds the imported data. If the dataset licence does not allow
+# redistribution, or the file is over 100 MB, uncomment the next line and publish
+# screenshots or a PDF export instead (or use Git LFS).
+# powerbi/*.pbix

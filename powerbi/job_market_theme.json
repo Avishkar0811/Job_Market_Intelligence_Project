@@ -1,0 +1,24 @@
+{
+  "name": "Job Market Intelligence",
+  "dataColors": ["#13A89E", "#0B2545", "#F2A541", "#E4572E", "#5C80BC", "#8AB17D", "#9B5DE5", "#6C757D"],
+  "background": "#FFFFFF",
+  "foreground": "#1F2933",
+  "tableAccent": "#13A89E",
+  "textClasses": {
+    "title":   { "fontFace": "Segoe UI Semibold", "fontSize": 12, "color": "#0B2545" },
+    "label":   { "fontFace": "Segoe UI", "fontSize": 10, "color": "#52606D" },
+    "callout": { "fontFace": "Segoe UI Semibold", "fontSize": 26, "color": "#0B2545" }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [{ "show": true, "fontColor": { "solid": { "color": "#0B2545" } } }],
+        "border": [{ "show": true, "color": { "solid": { "color": "#E4E7EB" } }, "radius": 6 }],
+        "background": [{ "show": true, "color": { "solid": { "color": "#FFFFFF" } } }]
+      }
+    },
+    "page": {
+      "*": { "background": [{ "color": { "solid": { "color": "#F4F6F8" } }, "transparency": 0 }] }
+    }
+  }
+}
