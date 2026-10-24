@@ -58,15 +58,15 @@ Screenshots are taken with the Experience slicer on **Freshers / Entry Level**.
 
 **Market Overview**
 
-![Market Overview](powerbi/screenshots/page1_market_overview.png)
+![Market Overview](powerbi/screenshots/page1.png)
 
 **Skills Analysis**
 
-![Skills Analysis](powerbi/screenshots/page2_skills_analysis.png)
+![Skills Analysis](powerbi/screenshots/page2.png)
 
 **Salary & Opportunity**
 
-![Salary and Opportunity](powerbi/screenshots/page3_salary_opportunity.png)
+![Salary and Opportunity](powerbi/screenshots/page3.png)
 
 - **Market Overview:** total jobs, fresher share, average salary, applicants per job, remote or hybrid share, plus jobs by category, month, city, work mode and top companies.
 - **Skills Analysis:** top 10 skills, a skill-by-category heatmap, and average skills per job by category.
